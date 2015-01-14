@@ -7,15 +7,30 @@ output:
 
 
 ## Loading and preprocessing the data
-
-
+```{r readdata,echo=TRUE}
+activity <- read.csv("activity.csv",colClasses = c("integer", "character", "character"))
+activity$date <- as.Date(activity$date, "%Y-%m-%d") # transform to Date
+# look a bit of the data
+head(activity)
+```
 
 ## What is mean total number of steps taken per day?
+```{r totoal_numver_steps, echo=TRUE}
+total_number_steps <- sapply(split(activity$steps, activity$date), sum, na.rm = TRUE)
+mean_tns <- mean(total_number_steps)
+median_tns <- median(total_number_steps)
+dates <- as.Date(names(total_number_steps), "%Y-%m-%d")
+#plot(dates, total_number_steps, type = "h", main = "Total Number of Steps Taken Each Day (2012)")
+hist(total_number_steps)
+```
 
-
+The mean of total number of steps taken per day is `r mean_tns`.  
+The median of total number of steps taken per day is `r median_tns`.
 
 ## What is the average daily activity pattern?
-
+```{r avg_daily_pattern, echo=TRUE}
+sub_activity <- subset(activity, interval == 5)
+```
 
 
 ## Imputing missing values
