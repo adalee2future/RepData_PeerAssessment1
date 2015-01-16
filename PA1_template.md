@@ -70,7 +70,8 @@ hist(total_number_steps)
 ```r
 avg_daily <- sapply(split(activity$steps, activity$interval), mean, na.rm = TRUE)
 hms <- strptime(names(avg_daily), "%H%M")
-plot(hms, avg_daily, type = "l", main = "Average Daily Activity Pattern", xlab = "interval", ylab = "steps")
+plot(hms, avg_daily, type = "l", main = "Average Daily Activity Pattern",  
+     xlab = "interval", ylab = "steps")
 ```
 
 ![](PA1_template_files/figure-html/avg_daily_pattern-1.png) 
@@ -168,10 +169,10 @@ par(mfrow = c(2, 1))
 ylim <- c(0, ceiling(max(weekday_avg_daily, weekend_avg_daily)))
 
 ## plot weekday
-plot(weekday_hms, weekday_avg_daily, type = "l", main = "Average Daily Activity Pattern on Weekday", ylim=ylim, xlab = "interval", ylab = "steps")
+plot(weekday_hms, weekday_avg_daily, type = "l", main = "Average Daily Activity Pattern on Weekday", ylim=ylim,   xlab = "interval", ylab = "steps")
 
 # plot on weekend
-plot(weekend_hms, weekend_avg_daily, type = "l", main = "Average Daily Activity Pattern on Weekend", ylim=ylim, xlab = "interval", ylab = "steps")
+plot(weekend_hms, weekend_avg_daily, type = "l", main = "Average Daily Activity Pattern on Weekend", ylim=ylim,   xlab = "interval", ylab = "steps")
 ```
 
 ![](PA1_template_files/figure-html/patterns-1.png) 
