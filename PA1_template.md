@@ -15,7 +15,6 @@ format_interval <- function(c){
   if(nchar(c) == 2) res <- paste("00", c, sep = "")
   if(nchar(c) == 3) res <- paste("0", c, sep = "")
   if(nchar(c) == 4) res <- c
-  
   res
 }
 
@@ -56,7 +55,6 @@ total_number_steps <- sapply(split(activity$steps, activity$date), sum, na.rm = 
 mean_tns <- mean(total_number_steps)
 median_tns <- median(total_number_steps)
 dates <- as.Date(names(total_number_steps), "%Y-%m-%d")
-#plot(dates, total_number_steps, type = "h", main = "Total Number of Steps Taken Each Day (2012)")
 hist(total_number_steps)
 ```
 
@@ -91,8 +89,7 @@ filled_activity <- activity
 
 n <- length(filled_activity$steps)
 
-# filling in all of the missing values of steps
-# use the mean for that 5-minute interval
+# filling in all of the missing values of steps, use the mean for that 5-minute interval
 for (i in 1:n){
   item <- filled_activity[i, ]
   if (is.na(item$steps)){
@@ -101,13 +98,12 @@ for (i in 1:n){
   }
 }
 
-# What is mean total number of steps taken per day
-# after imputting missing values
+# What is mean total number of steps taken per day after imputting missing values
 total_number_steps <- sapply(split(filled_activity$steps, filled_activity$date), sum, na.rm = TRUE)
 mean_tns <- mean(total_number_steps)
 median_tns <- median(total_number_steps)
 dates <- as.Date(names(total_number_steps), "%Y-%m-%d")
-#plot(dates, total_number_steps, type = "h", main = "Total Number of Steps Taken Each Day (2012)")
+# histgram of total_number_steps after filling missing value
 hist(total_number_steps, main = "histgram of total_number_steps after filling missing value")  
 ```
 
@@ -123,7 +119,6 @@ weekday_or_weekend <- function(d){
   weekdays_d <- weekdays(d)
   if (weekdays_d %in% weekend){res <- "weekend"}
   else {res <- "weekday"}
-  
   res
 }
 
@@ -161,7 +156,7 @@ weekday_avg_daily <- sapply(split(weekday_activity$steps, weekday_activity$inter
 weekday_hms <- strptime(names(weekday_avg_daily), "%H%M")
 
 ## weekend
-weekend_avg_daily <- sapply(split(weekend_activity$steps, weekend_activity$interval), mean)
+weekend_avg_daily <- sapply(split(weekend_activity$steps, weekend_activity$interval),  mean)
 weekend_hms <- strptime(names(weekend_avg_daily), "%H%M")
 
 ## 
@@ -169,10 +164,11 @@ par(mfrow = c(2, 1))
 ylim <- c(0, ceiling(max(weekday_avg_daily, weekend_avg_daily)))
 
 ## plot weekday
-plot(weekday_hms, weekday_avg_daily, type = "l", main = "Average Daily Activity Pattern on Weekday", ylim=ylim,   xlab = "interval", ylab = "steps")
-
+plot(weekday_hms, weekday_avg_daily, type = "l", main = "Average Daily Activity Pattern on Weekday",  
+     ylim=ylim,   xlab = "interval", ylab = "steps")
 # plot on weekend
-plot(weekend_hms, weekend_avg_daily, type = "l", main = "Average Daily Activity Pattern on Weekend", ylim=ylim,   xlab = "interval", ylab = "steps")
+plot(weekend_hms, weekend_avg_daily, type = "l", main = "Average Daily Activity Pattern on Weekend",  
+     ylim=ylim,   xlab = "interval", ylab = "steps")
 ```
 
 ![](PA1_template_files/figure-html/patterns-1.png) 
