@@ -114,8 +114,8 @@ weekend_hms <- strptime(names(weekend_avg_daily), "%H%M")
 par(mfrow = c(2, 1))
 ylim <- c(0, ceiling(max(weekday_avg_daily, weekend_avg_daily)))
 
-## plot weekday
-plot(weekday_hms, weekday_avg_daily, type = "l", main = "Average Daily Activity Pattern on Weekday",  
+## plot on weekday
+plot(weekday_hms, weekday_avg_daily, type = "l", main = "Average Daily Activity Pattern on Weekday",    
      ylim=ylim,   xlab = "interval", ylab = "steps")
 # plot on weekend
 plot(weekend_hms, weekend_avg_daily, type = "l", main = "Average Daily Activity Pattern on Weekend",  

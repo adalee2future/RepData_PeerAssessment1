@@ -193,8 +193,8 @@ weekend_hms &lt;- strptime(names(weekend_avg_daily), &quot;%H%M&quot;)
 par(mfrow = c(2, 1))
 ylim &lt;- c(0, ceiling(max(weekday_avg_daily, weekend_avg_daily)))
 
-## plot weekday
-plot(weekday_hms, weekday_avg_daily, type = &quot;l&quot;, main = &quot;Average Daily Activity Pattern on Weekday&quot;,  
+## plot on weekday
+plot(weekday_hms, weekday_avg_daily, type = &quot;l&quot;, main = &quot;Average Daily Activity Pattern on Weekday&quot;,    
      ylim=ylim,   xlab = &quot;interval&quot;, ylab = &quot;steps&quot;)
 # plot on weekend
 plot(weekend_hms, weekend_avg_daily, type = &quot;l&quot;, main = &quot;Average Daily Activity Pattern on Weekend&quot;,  
