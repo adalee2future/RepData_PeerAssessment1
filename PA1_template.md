@@ -122,7 +122,7 @@ weekday_or_weekend <- function(d){
   res
 }
 
-# reate a new factor variable in the dataset with two levels -"weekday" 
+# create a new factor variable in the dataset with two levels -"weekday" 
 # and "weekend" indicating whether a given date is a weekday or weekend day
 filled_activity$weekday_or_weekend <- as.factor(sapply(filled_activity$date, weekday_or_weekend))
 # summary filled_activity

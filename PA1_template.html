@@ -158,7 +158,7 @@ hist(total_number_steps, main = &quot;histgram of total_number_steps after filli
   res
 }
 
-# reate a new factor variable in the dataset with two levels -&quot;weekday&quot; 
+# create a new factor variable in the dataset with two levels -&quot;weekday&quot; 
 # and &quot;weekend&quot; indicating whether a given date is a weekday or weekend day
 filled_activity$weekday_or_weekend &lt;- as.factor(sapply(filled_activity$date, weekday_or_weekend))
 # summary filled_activity
